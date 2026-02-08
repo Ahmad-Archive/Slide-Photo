@@ -1,0 +1,136 @@
+:root {
+    --color-bg : #fff;
+    --color-text: #284643;
+    --color-text-muted: #6b7280;
+    --color-shadow: rgba(0, 0, 0, 0.09);
+    --color-accent: #4d7c74;
+    --font-body: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    --border-radius: 0.75rem;
+    --max-width: 900px;
+    --transition-duration: 0.3s;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-bg);
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    padding: 6rem 1rem;
+    display: flex;
+    min-height: 100vh;
+    line-height: 1.6;
+    justify-content: center;
+}
+
+.container {
+    max-width: var(--max-width);
+    width: 100%;
+    text-align: center;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px var(--color-shadow) 0 10px 15px var(--color-shadow);
+    background-color: #fefefe;
+    user-select: none;
+}
+
+.slides {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    will-change: transform;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.slide img {
+    height: 30.5rem;
+}
+
+.caption {
+    position: absolute;
+    top: 26rem;
+    right: 1.5rem;
+    left: 1.5rem;
+    background: rgba(255, 255, 255 / 0.85);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-shadow: 0 0 3px rgba(255, 255, 255 / 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    user-select: none;
+}
+
+.img-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(255, 255, 255 / 0.85);
+    backdrop-filter: saturate(-180%) blur(10px);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-duration);
+    color: var(--color-accent);
+    user-select: none;
+}
+
+.img-button:hover,
+.img-button:focus {
+    background: var(--color-accent);
+    color: #fff;
+    outline: none;
+}
+
+.img-button:disabled {
+    opacity: 0.3s;
+    cursor: default;
+}
+
+.prev-btn {
+    left: 1rem;
+}
+
+.next-btn {
+    right: 1rem;
+}
+
+.img-button svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: currentColor;
+    fill: none;
+}
+
+@media (max-width: 600px) {
+    .caption{
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+    .nav-button{
+        width: 40px;
+        height: 40px;
+    }
+}
