@@ -3,7 +3,6 @@
     const slideCount = slides.children.length;
     const prevBtn = document.getElementById('prevButton');
     const nextBtn = document.getElementById('nextButton');
-    const dot = document.querySelectorAll('.dot');
     let currentIndex = 0;
     let autoSlideInterval;
     const autoSlideDelay = 5000;
@@ -13,15 +12,8 @@
         else if(index >=slideCount) index = 0;
         slides.style.transform = `translateX(-${index * 100}%)`;
         currentIndex = index;
-        updateDots(); 
     }
-
-    function updateDots(){
-        dots.forEach((dot, i) => {
-            if(i === currentIndex) dot.classList.add('active');
-            else dot.classList.remove('active');
-        });
-    }
+}
 
     function nextSlide() {
         goToSlide(currentIndex + 1);
@@ -51,14 +43,6 @@
         startAutoSlide();
     });
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', (e) => {
-            let slideTo = parseInt(e.target.getAttribute('data-slide'), 10);
-            goToSlide(slideTo);
-            stopAutoSlide();
-            startAutoSlide();
-        });
-    });
 
     document.addEventListener('keydown', (e) => {
         if(e.key === 'ArrowLeft') {
