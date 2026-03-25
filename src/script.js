@@ -8,12 +8,11 @@
     const autoSlideDelay = 5000;
 
     function goToSlide(index) {
-        if(index < 0) index = slideCount = 1;
+        if(index < 0) index = slideCount - 1;
         else if(index >=slideCount) index = 0;
         slides.style.transform = `translateX(-${index * 100}%)`;
         currentIndex = index;
     }
-}
 
     function nextSlide() {
         goToSlide(currentIndex + 1);
@@ -32,16 +31,14 @@
     }
 
     nextBtn.addEventListener('click', () => {
-        nextSlide();
-        stopAutoSlide();
-        startAutoSlide();
-    });
+    nextSlide();
+    resetAutoSlide();
+  });
 
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        stopAutoSlide();
-        startAutoSlide();
-    });
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+  });
 
 
     document.addEventListener('keydown', (e) => {
